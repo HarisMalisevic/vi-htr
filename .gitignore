@@ -1,1 +1,4 @@
 /dataset
+/raw
+/output/labels_w/flor/train
+/output/labels_w/flor/validation

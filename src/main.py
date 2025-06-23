@@ -22,6 +22,7 @@ import datetime
 import argparse
 
 from data import preproc as pp, evaluation
+from data.evaluation import ocr_metrics
 from data.generator import DataGenerator, Tokenizer
 from data.reader import Dataset
 
@@ -205,10 +206,10 @@ if __name__ == "__main__":
                 for pd, gt in zip(predicts, ground_truth):
                     lg.write(f"TE_L {gt}\nTE_P {pd}\n")
 
-            evaluate = evaluation.ocr_metrics(predicts=predicts,
-                                              ground_truth=ground_truth,
-                                              norm_accentuation=args.norm_accentuation,
-                                              norm_punctuation=args.norm_punctuation)
+            evaluate = ocr_metrics(predicts=predicts,
+                                   ground_truth=ground_truth,
+                                   norm_accentuation=args.norm_accentuation,
+                                   norm_punctuation=args.norm_punctuation)
 
             e_corpus = "\n".join([
                 f"Total test images:    {dtgen.size['test']}",
@@ -263,7 +264,7 @@ if __name__ == "__main__":
 
                     ground_truth.append(' '.join(open(ds.dataset['test']['path'][i]).read().splitlines()))
 
-                evaluate = evaluation.ocr_metrics(predicts=predicts, ground_truth=ground_truth)
+                evaluate = ocr_metrics(predicts=predicts, ground_truth=ground_truth)
 
                 e_corpus = "\n".join([
                     f"Total test images:    {dtgen.size['test']}",

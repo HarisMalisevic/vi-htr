@@ -1,0 +1,7 @@
+Total test images:    1160
+Character Error Rate: 0.05438693
+Word Error Rate:      0.20000000
+Sequence Error Rate:  0.20000000
+Character Accuracy:   0.94561307
+Word Accuracy:        0.80000000
+Sequence Accuracy:    0.80000000
